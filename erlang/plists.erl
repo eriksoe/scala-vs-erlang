@@ -25,8 +25,7 @@ runFun(Fun,List,EndPid) -> lists:foreach(Fun,List),
 	EndPid ! finished.
 
 waitCompletion(Pids) -> 
-	Times = lists:seq(1,length(Pids)),
 	lists:foreach(fun (_X) -> 
 			receive finished -> ok 
 			end
-		end, Times).
+		end, Pids).
